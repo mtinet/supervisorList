@@ -11,6 +11,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src='https://d3js.org/d3.v4.min.js'></script>
+		<script src='dataLoad.js'></script>
 	</head>
 	<body class="is-preload-0 is-preload-1 is-preload-2">
 
@@ -35,8 +37,8 @@
 					<section id="thumbnails">
 						<article>
 							<a class="thumbnail" href="https://github.com/mtinet/supervisorList/blob/main/photos/0.jpg?raw=true" data-position="left center"><img src="https://github.com/mtinet/supervisorList/blob/main/photos/0.jpg?raw=true" alt="" /></a>
-							<h2>30	강창식	</h2>
-							<p>생활지도/사회	성북강북교육지원청 학교통합지원센터	010-4187-7731	antoni@sen.go.kr	(01158)서울특별시 강북구 솔매로50길 65(미아동 12755) 성북강북교육지원청 학교통합지원센터</p>
+							<h2><div id = "orderAndName"></div></h2>
+							<p><div id = "presentData"></div></p>
 						</article>
 
 
@@ -56,6 +58,7 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/main.js"></script>
+
 
 	</body>
 </html>
