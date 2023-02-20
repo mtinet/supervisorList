@@ -36,8 +36,10 @@ function displayResults(teachers) {
   } else {
     const html = teachers.map(teacher => `
       <div class="teacher">
-        <img src="https://raw.githubusercontent.com/mtinet/supervisorList/main/photos/${teacher[0] < 365 ? 0 : teacher[0]}.jpg" width="500px" alt="${teacher[2]}">
-        <div>
+        <center>
+          <img src="https://raw.githubusercontent.com/mtinet/supervisorList/main/photos/${teacher[0] < 365 ? 0 : teacher[0]}.jpg" width="350px" alt="${teacher[2]}">
+        </center>
+        <div class="teacher-info">
           <h2>${teacher[2]}</h2>
           <p><strong>Position:</strong> ${teacher[3]}</p>
           <p><strong>Subject:</strong> ${teacher[4]}</p>
