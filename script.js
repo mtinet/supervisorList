@@ -1,16 +1,26 @@
 const dataUrl = "https://raw.githubusercontent.com/mtinet/supervisorList/main/supervisorList.csv";
 const resultsContainer = document.getElementById("results");
 
-function searchName(name) {
-  if (name === "") {
+function searchName(name, number) {
+  if (name === "" && number === "") {
+    displayResults("기수와 이름 중 하나를 입력하고 검색해주세요.");
     return; // 검색어가 없으면 검색하지 않고 종료
+  }
+  if (name !== "" && number !== "") {
+    displayResults("기수와 이름 중 하나만 검색해주세요.");
+    return;
   }
   fetch(dataUrl)
     .then(response => response.text())
     .then(data => {
       const rows = data.trim().split("\n").slice(1);
       const teachers = rows.map(row => row.split(","));
-      const matchingTeachers = teachers.filter(teacher => teacher[2].includes(name));
+      let matchingTeachers;
+      if (number) {
+        matchingTeachers = teachers.filter(teacher => teacher[1] === number);
+      } else {
+        matchingTeachers = teachers.filter(teacher => teacher[2].includes(name));
+      }
       if (matchingTeachers.length > 0) {
         displayResults(matchingTeachers);
       } else {
@@ -45,5 +55,6 @@ const form = document.querySelector("form");
 form.addEventListener("submit", event => {
   event.preventDefault();
   const name = form.elements.name.value;
-  searchName(name);
+  const number = form.elements.number.value;
+  searchName(name, number);
 });

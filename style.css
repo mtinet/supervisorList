@@ -37,3 +37,10 @@ input[type="submit"] {
 #results {
   margin-top: 2em;
 }
+
+/* 모바일에서만 적용할 스타일 */
+@media (max-width: 375px) {
+  body {
+    font-size: 14px;
+  }
+}
