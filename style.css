@@ -32,6 +32,10 @@ input[type="submit"] {
   width: 100%;
 }
 
+input.orange-background {
+  background-color: #FF4500;
+}
+
 .teacher {
   display: flex;
   align-items: center;
