@@ -28,6 +28,21 @@ function authenticateUser(event) {
     .catch(error => console.log(error));
 }
 
+const numberInput = document.getElementById("number");
+
+numberInput.addEventListener('focus', () => {
+  numberInput.placeholder = "";
+  numberInput.style.opacity = 1.0;
+});
+
+numberInput.addEventListener('blur', () => {
+  if (numberInput.value === '') {
+    numberInput.placeholder = "ex) 24, 24-2, 31";
+    numberInput.style.opacity = 0.3;
+  }
+});
+
+
 function displayMessage(message) {
   const messageContainer = document.getElementById("result");
   messageContainer.innerHTML = message;

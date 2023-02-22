@@ -1,6 +1,7 @@
 const dataUrl = "https://raw.githubusercontent.com/mtinet/supervisorList/main/supervisorList.csv";
 const resultsContainer = document.getElementById("results");
 
+
 function searchName(name, number) {
   if (name === "" && number === "") {
     displayResults("기수와 이름 중 하나를 입력하고 검색해주세요.");
@@ -30,6 +31,7 @@ function searchName(name, number) {
     .catch(error => console.log(error));
 }
 
+
 function displayResults(teachers) {
   if (typeof teachers === "string") {
     resultsContainer.innerHTML = teachers;
@@ -53,10 +55,25 @@ function displayResults(teachers) {
   }
 }
 
+
 const form = document.querySelector("form");
 form.addEventListener("submit", event => {
   event.preventDefault();
   const name = form.elements.name.value;
   const number = form.elements.number.value;
   searchName(name, number);
+});
+
+
+const numberInput = document.getElementById("number");
+numberInput.addEventListener('focus', () => {
+  numberInput.placeholder = "";
+  numberInput.style.opacity = 1.0;
+});
+
+numberInput.addEventListener('blur', () => {
+  if (numberInput.value === '') {
+    numberInput.placeholder = "ex) 24, 24-2, 31";
+    numberInput.style.opacity = 0.3;
+  }
 });
