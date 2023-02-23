@@ -43,8 +43,9 @@ function displayResults(teachers) {
         </center>
         <div class="teacher-info">
           <h2>${teacher[2]}</h2>
-          <p><strong>Position:</strong> ${teacher[3]}</p>
-          <p><strong>Subject:</strong> ${teacher[4]}</p>
+          <p><strong>Batch No.:</strong> ${teacher[1]}기</p>
+          <p><strong>Subject:</strong> ${teacher[3]}</p>
+          <p><strong>Position:</strong> ${teacher[4]}</p>
           <p><strong>Phone:</strong> ${teacher[5]}</p>
           <p><strong>Email:</strong> ${teacher[6]}</p>
           <p><strong>Address:</strong> ${teacher[7]}</p>
