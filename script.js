@@ -39,7 +39,7 @@ function displayResults(teachers) {
     const html = teachers.map(teacher => `
       <div class="teacher">
         <center>
-          <img src="https://raw.githubusercontent.com/mtinet/supervisorList/main/photos/${teacher[0] < 365 ? 0 : teacher[0]}.jpg" width="250px" alt="${teacher[2]}">
+          <img src="https://raw.githubusercontent.com/mtinet/supervisorList/main/photos/${teacher[0] <= 365 ? teacher[0] : 526}.jpg" width="250px" alt="${teacher[2]}">
         </center>
         <div class="teacher-info">
           <h2>${teacher[2]}</h2>
