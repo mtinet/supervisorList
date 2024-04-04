@@ -25,7 +25,7 @@ function searchName(name, number) {
       if (matchingTeachers.length > 0) {
         displayResults(matchingTeachers);
       } else {
-        displayResults("No results found.");
+        displayResults("검색 결과가 없습니다.");
       }
     })
     .catch(error => console.log(error));
