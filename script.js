@@ -46,7 +46,7 @@ function displayResults(teachers) {
           <p><strong>Batch No.:</strong> ${teacher[1]}기</p>
           <p><strong>Subject:</strong> ${teacher[3]}</p>
           <p><strong>Position:</strong> ${teacher[4]}</p>
-          <p><strong>Phone:</strong> ${teacher[5]}</p>
+          <p><strong>Phone:</strong> <a href="tel:${teacher[5]}">${teacher[5]}</a></p>
           <p><strong>Email:</strong> ${teacher[6]}</p>
           <p><strong>Address:</strong> ${teacher[7]}</p>
         </div>
