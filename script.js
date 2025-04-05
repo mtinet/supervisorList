@@ -2,26 +2,34 @@ const dataUrl = "https://raw.githubusercontent.com/mtinet/supervisorList/main/su
 const resultsContainer = document.getElementById("results");
 
 
-function searchName(name, number) {
-  if (name === "" && number === "") {
-    displayResults("기수와 이름 중 하나를 입력하고 검색해주세요.");
-    return; // 검색어가 없으면 검색하지 않고 종료
-  }
-  if (name !== "" && number !== "") {
-    displayResults("기수와 이름 중 하나만 검색해주세요.");
+function searchTeacher(name, number, position) {
+  const filledFields = [name, number, position].filter(value => value !== "");
+
+  if (filledFields.length === 0) {
+    displayResults("기수, 이름 또는 근무처 중 하나를 입력하고 검색해주세요.");
     return;
   }
+
+  if (filledFields.length > 1) {
+    displayResults("기수, 이름, 근무처 중 하나만 입력해주세요.");
+    return;
+  }
+
   fetch(dataUrl)
     .then(response => response.text())
     .then(data => {
       const rows = data.trim().split("\n").slice(1);
       const teachers = rows.map(row => row.split(","));
       let matchingTeachers;
+
       if (number) {
         matchingTeachers = teachers.filter(teacher => teacher[1] === number);
-      } else {
+      } else if (name) {
         matchingTeachers = teachers.filter(teacher => teacher[2].includes(name));
+      } else if (position) {
+        matchingTeachers = teachers.filter(teacher => teacher[4] && teacher[4].includes(position));
       }
+
       if (matchingTeachers.length > 0) {
         displayResults(matchingTeachers);
       } else {
@@ -30,6 +38,7 @@ function searchName(name, number) {
     })
     .catch(error => console.log(error));
 }
+
 
 
 function displayResults(teachers) {
@@ -60,9 +69,10 @@ function displayResults(teachers) {
 const form = document.querySelector("form");
 form.addEventListener("submit", event => {
   event.preventDefault();
-  const name = form.elements.name.value;
-  const number = form.elements.number.value;
-  searchName(name, number);
+  const name = form.elements.name.value.trim();
+  const number = form.elements.number.value.trim();
+  const position = form.elements.position.value.trim();
+  searchTeacher(name, number, position);
 });
 
 
